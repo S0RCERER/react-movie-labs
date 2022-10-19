@@ -49,8 +49,16 @@ describe("Navigation", () => {
     );
   });
   describe("From the favourites page to a movie's details", () => {
-    // TODO
+    beforeEach(() => {
+      cy.get("button[aria-label='add to favorites']").eq(2).click();
+    });
+    it("natigates from favourite page to the detail page.", () => {
+      cy.get("button").contains("Favorites").click();
+      cy.get(".MuiCardActions-root").contains("More Info").click();
+      cy.url().should("include", `/movies/${movies[2].id}`);
+    });
   });
+    
   describe("The forward/backward links", () => {
     beforeEach(() => {
       cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
