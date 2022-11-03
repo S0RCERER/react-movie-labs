@@ -32,4 +32,5 @@ const UpcomingMoviesPage = () => {
     />
   );
 };
+
 export default UpcomingMoviesPage;
